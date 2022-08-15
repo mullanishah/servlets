@@ -1,6 +1,8 @@
 package com.sha.servlets.pages;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,15 @@ public class AllStudentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("reached all-students servlet");
+		response.setContentType("text/html");
+		try(PrintWriter pw = response.getWriter();){
+			
+		} catch (Exception e) {
+			if(e instanceof ServletException)
+				throw new ServletException("Error in doGet() of " + getClass().getName(), e);
+			e.printStackTrace();
+		}
 	}
 
 }
