@@ -10,11 +10,15 @@ public class Student {
 	private String address;
 	private Date bdate;
 	private long contactNum;
-	private long emergencyContactNum;
+	private long emergencyContact;
 	private String registrationNum;
+	
+	public Student() {
+		
+	}
 
 	public Student(String rollNum, String fullName, String course, String semester, String address, Date bdate,
-			long contactNum, long emergencyContactNum, String registrationNum) {
+			long contactNum, long emergencyContact, String registrationNum) {
 		super();
 		this.rollNum = rollNum;
 		this.fullName = fullName;
@@ -23,7 +27,7 @@ public class Student {
 		this.address = address;
 		this.bdate = bdate;
 		this.contactNum = contactNum;
-		this.emergencyContactNum = emergencyContactNum;
+		this.emergencyContact = emergencyContact;
 		this.registrationNum = registrationNum;
 	}
 
@@ -83,12 +87,12 @@ public class Student {
 		this.contactNum = contactNum;
 	}
 
-	public long getEmergencyContactNum() {
-		return emergencyContactNum;
+	public long getEmergencyContact() {
+		return emergencyContact;
 	}
 
-	public void setEmergencyContactNum(long emergencyContactNum) {
-		this.emergencyContactNum = emergencyContactNum;
+	public void setEmergencyContact(long emergencyContact) {
+		this.emergencyContact = emergencyContact;
 	}
 
 	public String getRegistrationNum() {
@@ -103,6 +107,6 @@ public class Student {
 	public String toString() {
 		return "Student [rollNum=" + rollNum + ", fullName=" + fullName + ", course=" + course + ", semester="
 				+ semester + ", address=" + address + ", bdate=" + bdate + ", contactNum=" + contactNum
-				+ ", emergencyContactNum=" + emergencyContactNum + ", registrationNum=" + registrationNum + "]";
+				+ ", emergencyContact=" + emergencyContact + ", registrationNum=" + registrationNum + "]";
 	}
 }
