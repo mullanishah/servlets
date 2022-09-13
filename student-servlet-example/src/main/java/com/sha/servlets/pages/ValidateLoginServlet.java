@@ -37,7 +37,7 @@ public class ValidateLoginServlet extends HttpServlet {
     		FacultyDao facultyDao = new FacultyDao();
     		
     		faculty = facultyDao.validateAdminCredentials(email, password);
-    		boolean hasAdminAuthority = faculty.hasAdminRole();
+    		boolean hasAdminAuthority = faculty.hasAdminRole() ? true : false;
     		
     		if(hasAdminAuthority) {
     			//setup empty lists, nd maps

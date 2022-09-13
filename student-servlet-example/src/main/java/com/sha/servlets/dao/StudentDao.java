@@ -21,14 +21,16 @@ import com.sha.servlets.utils.StudentConstants;
 public class StudentDao {
 	
 	private Connection connection;
-	private PreparedStatement pstAllStudents;
+	private PreparedStatement pstAllStudents, pstGetStudByReg;
 	
 	public StudentDao() throws ClassNotFoundException, SQLException {
 		connection = DatabaseUtils.getConnection();
 		pstAllStudents = connection.prepareStatement(StudentConstants.queryGetAllStudents);
+		pstGetStudByReg = connection.prepareStatement(StudentConstants.queryGetStudentByRegNum);
 	}
 	
 	public void cleanUp() throws Exception {
+		if(pstGetStudByReg != null) pstGetStudByReg.close();
 		if(null != pstAllStudents)	pstAllStudents.close();
 		if(null != connection)	connection.close();
 	}
@@ -53,4 +55,26 @@ public class StudentDao {
 		}
 		return students;
 	}
+	
+	public Student getStudentDetails(String registrationNum) throws SQLException {
+		
+		Student student = null;
+		pstGetStudByReg.setString(1, registrationNum);
+		ResultSet rst = pstGetStudByReg.executeQuery();
+		if(rst.next()) {
+			student = new Student();
+			student.setRollNum(rst.getString(10));
+			student.setFullName(rst.getString("name"));
+			student.setCourse(rst.getString("course"));
+			student.setSemester(rst.getString("semester"));
+			student.setAddress(rst.getString("address")); 
+			student.setBdate(rst.getDate("bday"));
+			student.setContactNum(rst.getInt("contact"));
+			student.setEmergencyContact(rst.getLong("emergency"));  
+			student.setRegistrationNum(rst.getString(9));
+			System.out.println("in dao:" + student);
+		} 
+		return student;
+	}
+	
 }

@@ -47,7 +47,7 @@ public class AllStudentsServlet extends HttpServlet {
 					+ "</tr>");
 			for(Student student : studentList) {
 				out.print("<tr>"
-						+ "<td><input type='radio' id='" + student.getRegistrationNum() + "' name='students'></td>"
+						+ "<td><input type='radio' id='"+ student.getRegistrationNum() +"' name='selectedRegNum' value='" + student.getRegistrationNum() + "'></td>"
 						+ "<td><label for='" +student.getRegistrationNum() + "'>" + student.getRegistrationNum() + "</label></td> " + "<td>" + student.getFullName()+"</td> "
 						+ "<td>" + student.getBdate() +"</td> " + "<td>" + student.getCourse() +", "+ student.getSemester() +"</td>"
 						+ "<td>" + student.getAddress() +"</td>"+ "<td>" + student.getContactNum() +"</td>"

@@ -6,5 +6,7 @@ public interface StudentConstants {
 	
 	public static String queryGetAllStudents = "select * from student";
 	
+	public static String queryGetStudentByRegNum = "select * from student where registration_num=?";
+	
 	public static String querySearchStudent = "select * from student where name like ";
 }
